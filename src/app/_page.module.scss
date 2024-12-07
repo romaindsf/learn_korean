@@ -1,0 +1,17 @@
+@use '../styles/_utils.scss' as *;
+
+.main_content {
+  width: 80%;
+  margin: auto;
+  a {
+    @include font-title(1.2rem);
+    color: $text_color;
+  }
+}
+
+.themes_div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+}

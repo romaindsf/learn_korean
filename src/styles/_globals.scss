@@ -1,0 +1,39 @@
+@use './utils' as *;
+
+body {
+  height: 100%;
+  background-color: $background_color;
+  margin: 0;
+}
+main {
+  height: 100%;
+}
+h1 {
+  @include font-title(3rem);
+  text-align: center;
+  padding: 2rem;
+}
+h2 {
+  @include font-title(1.2rem);
+  text-align: center;
+  margin-bottom: 5rem;
+}
+h3 {
+  @include font-title(1.5rem);
+  color: $text_color;
+}
+a {
+  @include font();
+  color: $green_color;
+  text-decoration: none;
+
+  &:hover {
+    color: $hover_color;
+  }
+}
+p {
+  @include font();
+}
+li {
+  list-style: none;
+}
