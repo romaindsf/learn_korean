@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import styles from './_page.module.scss'
+import styles from './page.module.scss'
 import data from '@/data/data.json'
 import ThemeDiv from '@/components/ThemeDiv/ThemeDiv'
 

@@ -1,0 +1,63 @@
+@use './utils' as *;
+@use './reset.scss';
+
+body {
+  height: 100%;
+  background-color: $background_color;
+  margin: 0;
+}
+main {
+  height: 100%;
+}
+h1 {
+  @include font-title(3rem);
+  text-align: center;
+  padding: 2rem;
+}
+h2 {
+  @include font-title(1.2rem);
+  text-align: center;
+  margin-bottom: 5rem;
+}
+h3 {
+  @include font-title(1.5rem);
+  color: $text_color;
+}
+a {
+  @include font();
+  color: $green_color;
+  text-decoration: none;
+
+  &:hover {
+    color: $hover_color;
+  }
+  &:active {
+    color: $active_color;
+  }
+}
+p {
+  @include font();
+}
+button {
+  @include font();
+  background-color: $div_Bg;
+  border: 1px solid $green_color;
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 0 4px 10px $green_color;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: scale(1.03);
+    border: 1px solid $hover_color;
+    box-shadow: 0 4px 10px $hover_color;
+    transform: translateY(2px);
+  }
+  &:active {
+    background-color: $active_color;
+    transform: translateY(0);
+  }
+}
+li {
+  list-style: none;
+}

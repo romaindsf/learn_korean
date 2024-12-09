@@ -1,4 +1,4 @@
-import '../styles/_globals.scss'
+import '../styles/globals.scss'
 
 export const metadata = {
   title: 'Learn Korean!',
