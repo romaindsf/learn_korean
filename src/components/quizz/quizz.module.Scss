@@ -1,0 +1,30 @@
+@use '@/styles/utils.scss' as *;
+.quizz_div {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  border-radius: 10px;
+  border: 1px solid $green_color;
+  background-color: $div_Bg;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: $text_color;
+  }
+  h3 {
+    text-align: center;
+    color: $text_color;
+    font-size: 8rem;
+    margin: 1rem;
+  }
+  button {
+    color: $text_color;
+  }
+}

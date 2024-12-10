@@ -10,8 +10,7 @@ import { useEffect } from 'react'
 
 export default function QuizzPage() {
   const { theme } = useParams<{ theme: string }>()
-  const { start, setStart, filteredQuestions, setFilteredQuestions } =
-    useQuizzContext()
+  const { start, setStart, setFilteredQuestions, resetQuiz } = useQuizzContext()
 
   const ListQuestions: Question[] = useFilteredQuestions(theme, 15)
 
@@ -25,9 +24,11 @@ export default function QuizzPage() {
       {!start ? (
         <Button onClick={() => setStart(!start)}>Start Quizz</Button>
       ) : (
-        <Quizz listQuestions={filteredQuestions} />
+        <Quizz />
       )}
-      <Link href='/'>Go back to home</Link>
+      <Link href='/' onClick={resetQuiz}>
+        Go back to home
+      </Link>
     </main>
   )
 }
