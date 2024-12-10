@@ -4,27 +4,60 @@
   width: 80%;
   margin: auto;
   border-radius: 10px;
-  border: 1px solid $green_color;
   background-color: $div_Bg;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
     color: $text_color;
+  }
+  h2 {
+    margin: 0;
   }
   h3 {
     text-align: center;
     color: $text_color;
     font-size: 8rem;
-    margin: 1rem;
+    margin: 0;
   }
-  button {
+  input {
+    width: 40%;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    border: 1px solid $text_color;
+    text-align: center;
+  }
+  .quizz_button {
     color: $text_color;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+  }
+  .food_input {
+    width: 60%;
+  }
+  .wrong_input {
+    background-color: red;
+    opacity: 0.5;
+    border-radius: 5px;
+  }
+  .wrong_answer {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    color: red;
+  }
+  .correct_answer {
+    font-size: 1.5rem;
   }
 }

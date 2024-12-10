@@ -1,157 +1,131 @@
 [
   {
     "theme": "alphabet",
-    "english": "A",
     "korean": "ㄱ",
     "romanisation": "g"
   },
   {
     "theme": "alphabet",
-    "english": "B",
     "korean": "ㄴ",
     "romanisation": "n"
   },
   {
     "theme": "alphabet",
-    "english": "C",
     "korean": "ㄷ",
     "romanisation": "d"
   },
   {
     "theme": "alphabet",
-    "english": "D",
     "korean": "ㄹ",
     "romanisation": "r/l"
   },
   {
     "theme": "alphabet",
-    "english": "E",
     "korean": "ㅁ",
     "romanisation": "m"
   },
   {
     "theme": "alphabet",
-    "english": "F",
     "korean": "ㅂ",
     "romanisation": "b"
   },
   {
     "theme": "alphabet",
-    "english": "G",
     "korean": "ㅅ",
     "romanisation": "s"
   },
   {
     "theme": "alphabet",
-    "english": "H",
     "korean": "ㅇ",
     "romanisation": "ng"
   },
   {
     "theme": "alphabet",
-    "english": "I",
     "korean": "ㅈ",
     "romanisation": "j"
   },
   {
     "theme": "alphabet",
-    "english": "J",
     "korean": "ㅊ",
     "romanisation": "ch"
   },
   {
     "theme": "alphabet",
-    "english": "K",
     "korean": "ㅋ",
     "romanisation": "k"
   },
   {
     "theme": "alphabet",
-    "english": "L",
     "korean": "ㅌ",
     "romanisation": "t"
   },
   {
     "theme": "alphabet",
-    "english": "M",
     "korean": "ㅍ",
     "romanisation": "p"
   },
   {
     "theme": "alphabet",
-    "english": "N",
     "korean": "ㅎ",
     "romanisation": "h"
   },
   {
     "theme": "alphabet",
-    "english": "O",
     "korean": "ㅏ",
     "romanisation": "a"
   },
   {
     "theme": "alphabet",
-    "english": "P",
     "korean": "ㅑ",
     "romanisation": "ya"
   },
   {
     "theme": "alphabet",
-    "english": "Q",
     "korean": "ㅓ",
     "romanisation": "eo"
   },
   {
     "theme": "alphabet",
-    "english": "R",
     "korean": "ㅕ",
     "romanisation": "yeo"
   },
   {
     "theme": "alphabet",
-    "english": "S",
     "korean": "ㅗ",
     "romanisation": "o"
   },
   {
     "theme": "alphabet",
-    "english": "T",
     "korean": "ㅛ",
     "romanisation": "yo"
   },
   {
     "theme": "alphabet",
-    "english": "U",
     "korean": "ㅜ",
     "romanisation": "u"
   },
   {
     "theme": "alphabet",
-    "english": "V",
     "korean": "ㅠ",
     "romanisation": "yu"
   },
   {
     "theme": "alphabet",
-    "english": "W",
     "korean": "ㅡ",
     "romanisation": "eu"
   },
   {
     "theme": "alphabet",
-    "english": "X",
     "korean": "ㅣ",
     "romanisation": "i"
   },
   {
     "theme": "alphabet",
-    "english": "Y",
     "korean": "ㅐ",
     "romanisation": "ae"
   },
   {
     "theme": "alphabet",
-    "english": "Z",
     "korean": "ㅔ",
     "romanisation": "e"
   },
