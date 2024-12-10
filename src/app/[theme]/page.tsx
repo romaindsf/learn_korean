@@ -1,57 +1,33 @@
 'use client'
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import data from '@/data/data.json'
+import { useQuizzContext } from '@/contexts/QuizzContext'
 import { Question } from '@/types/types'
+import { useFilteredQuestions } from '@/hooks/useFilteredQuestions'
 import Link from 'next/link'
-import styles from './page.module.scss'
+import Button from '@/components/button/Button'
+import Quizz from '@/components/quizz/Quizz'
+import { useEffect } from 'react'
 
 export default function QuizzPage() {
   const { theme } = useParams<{ theme: string }>()
-  const [showNbQuestions, setShowNbQuestions] = useState<boolean>(false)
-  const [arrayCategoryQuestion, setArrayCategoryQuestion] = useState<string[]>(
-    []
-  )
-  const [quizzStarted, setQuizzStarted] = useState<boolean>(false)
+  const { start, setStart, filteredQuestions, setFilteredQuestions } =
+    useQuizzContext()
+
+  const ListQuestions: Question[] = useFilteredQuestions(theme, 15)
+
   useEffect(() => {
-    const filteredQuestions = data
-      .filter((question: Question) => question.theme === theme)
-      .map((question: Question) => question.theme)
-    setArrayCategoryQuestion(filteredQuestions)
-  }, [theme])
+    setFilteredQuestions(ListQuestions)
+  }, [ListQuestions, setFilteredQuestions])
 
   return (
-    <>
+    <main>
       <h1> {theme}&apos;s quizz </h1>
-      {!quizzStarted && (
-        <button
-          type='button'
-          className={styles.start_button}
-          onClick={() => setQuizzStarted(!quizzStarted)}
-        >
-          Start Quizz
-        </button>
+      {!start ? (
+        <Button onClick={() => setStart(!start)}>Start Quizz</Button>
+      ) : (
+        <Quizz listQuestions={filteredQuestions} />
       )}
-      {quizzStarted && (
-        <button
-          type='button'
-          className={styles.start_button}
-          onClick={() => setQuizzStarted(!quizzStarted)}
-        >
-          Stop Quizz
-        </button>
-      )}
-      <div className={styles.buttonContainer}>
-        <button
-          type='button'
-          onClick={() => setShowNbQuestions(!showNbQuestions)}
-        >
-          {showNbQuestions
-            ? arrayCategoryQuestion.length
-            : 'Show how many questions are available'}
-        </button>
-        <Link href='/'>Go back to home</Link>
-      </div>
-    </>
+      <Link href='/'>Go back to home</Link>
+    </main>
   )
 }

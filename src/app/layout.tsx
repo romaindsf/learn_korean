@@ -1,8 +1,9 @@
+import { QuizzProvider } from '@/contexts/QuizzContext'
 import '../styles/globals.scss'
 
 export const metadata = {
   title: 'Learn Korean!',
-  description: 'learn korean with our differenbs themed quizzes',
+  description: 'learn korean with our differents themed quizzes',
 }
 
 export default function RootLayout({
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <QuizzProvider>{children}</QuizzProvider>
+      </body>
     </html>
   )
 }

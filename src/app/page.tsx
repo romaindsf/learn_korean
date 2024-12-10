@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import data from '@/data/data.json'
-import ThemeDiv from '@/components/ThemeDiv/ThemeDiv'
+import ThemeDiv from '@/components/themeDiv/ThemeDiv'
 
 interface Theme {
   theme: string

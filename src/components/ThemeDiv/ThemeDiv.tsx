@@ -1,5 +1,6 @@
 import styles from './themeDiv.module.scss'
 import Link from 'next/link'
+import Button from '@/components/button/Button'
 
 interface ThemeDivProps {
   themes: string[]
@@ -7,11 +8,10 @@ interface ThemeDivProps {
 
 export default function ThemeDiv({ themes }: ThemeDivProps) {
   return (
-    <div className={styles.themeDiv}>
+    <div className={styles.themes_div}>
       {themes.map((theme, index) => (
         <Link key={index} href={theme}>
-          {' '}
-          {theme}{' '}
+          <Button className={styles.theme_button}>{theme}</Button>
         </Link>
       ))}
     </div>
