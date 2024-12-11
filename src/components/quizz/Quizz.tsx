@@ -8,6 +8,7 @@ import { handleSubmit, handleChange } from './utils/utils'
 
 export default function Quizz() {
   const {
+    // Destructure the context
     questionsList,
     currentQuestionIndex,
     setCurrentQuestionIndex,
@@ -15,33 +16,35 @@ export default function Quizz() {
     score,
     setScore,
   } = useQuizzContext()
+  // State to store the user's answer
   const [answer, setAnswer] = useState<string>('')
   const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false)
   const [isOver, setIsOver] = useState<boolean>(false)
-
+  // Check if the selected theme is 'food' or 'alphabet'
   const foodTheme: boolean = selectedTheme === 'food'
-
   const alphabetTheme: boolean = selectedTheme === 'alphabet'
 
   return (
-    <div className={styles.quizz_div}>
-      {isOver ? (
-        <div className={styles.score_div}>
+    <div>
+      {isOver ? ( // If the quiz is over, display the score
+        <div>
           <h2>
             Your score is: {score} / {questionsList.length}
           </h2>
         </div>
       ) : (
-        <>
+        <div>
           {!questionsList || questionsList.length === 0 ? (
+            // If there are no questions available, display a message
             <p>No questions available.</p>
           ) : (
-            <div>
-              <DisplayQuestion
+            <div className={styles.quizz_div}>
+              <DisplayQuestion // Display the question component
                 questionNumber={currentQuestionIndex + 1}
                 korean={questionsList[currentQuestionIndex].korean}
               />
               {!isWrongAnswer ? (
+                // Display the answer form component
                 <AnswerForm
                   answer={answer}
                   isFoodCategory={foodTheme}
@@ -64,9 +67,10 @@ export default function Quizz() {
                   }
                 />
               ) : (
+                // Display the wrong answer component
                 <WrongAnswerDisplay
                   correctAnswer={
-                    alphabetTheme
+                    alphabetTheme // If the theme is 'alphabet', display the romanisation
                       ? questionsList[currentQuestionIndex].romanisation || ''
                       : questionsList[currentQuestionIndex].english || ''
                   }
@@ -79,7 +83,7 @@ export default function Quizz() {
               )}
             </div>
           )}
-        </>
+        </div>
       )}
     </div>
   )

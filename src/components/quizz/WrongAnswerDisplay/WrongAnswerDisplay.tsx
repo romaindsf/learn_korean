@@ -17,9 +17,7 @@ export const WrongAnswerDisplay: React.FC<WrongAnswerDisplayProps> = ({
       <p className={styles.correct_answer}>
         The correct answer was: {correctAnswer}
       </p>
-      {description && (
-        <p className={styles.correct_answer_description}>{description}</p>
-      )}
+      {description && <p>{description}</p>}
       <Button className={styles.quizz_button} onClick={onNext}>
         Next
       </Button>

@@ -1,0 +1,13 @@
+@use '@/styles/utils.scss' as *;
+
+.question {
+  h2 {
+    margin: 0;
+  }
+  h3 {
+    text-align: center;
+    color: $text_color;
+    font-size: 8rem;
+    margin: 0;
+  }
+}

@@ -6,7 +6,7 @@ export const handleSubmit = (
   answer: string,
   setAnswer: (value: string) => void,
   setIsWrongAnswer: (value: boolean) => void,
-  isAlphabetCategory: boolean,
+  alphabetTheme: boolean,
   questionsList: Question[],
   currentQuestionIndex: number,
   score: number,
@@ -21,12 +21,12 @@ export const handleSubmit = (
   let isCorrect = false
 
   if (
-    !isAlphabetCategory &&
+    !alphabetTheme &&
     currentQuestion?.english?.toLowerCase() === trimmedAnswer
   ) {
     isCorrect = true
   } else if (
-    isAlphabetCategory &&
+    alphabetTheme &&
     currentQuestion.romanisation.toLowerCase().includes(trimmedAnswer)
   ) {
     isCorrect = true

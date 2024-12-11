@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent } from 'react'
 import Button from '@/components/button/Button'
-import styles from '../quizz.module.scss'
+import styles from './answerForm.module.scss'
 
 interface AnswerFormProps {
   answer: string
@@ -17,7 +17,7 @@ export const AnswerForm: React.FC<AnswerFormProps> = ({
   handleSubmit,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.quizz_form} onSubmit={handleSubmit}>
       <label htmlFor='answer'>Answer:</label>
       <input
         type='text'
@@ -25,9 +25,11 @@ export const AnswerForm: React.FC<AnswerFormProps> = ({
         name='answer'
         value={answer}
         onChange={handleChange}
+        // Add the 'food_input' class if the theme is 'food'
         className={`${isFoodCategory ? styles.food_input : ''} ${
           isWrongAnswer ? styles.wrong_input : ''
         }`}
+        // Disable the input field if the answer is wrong
         {...(isWrongAnswer ? { readOnly: true } : {})}
       />
       <Button type='submit' className={styles.quizz_button}>

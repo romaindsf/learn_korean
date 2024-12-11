@@ -9,47 +9,7 @@
   justify-content: center;
   align-items: center;
   height: 80vh;
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    color: $text_color;
-  }
-  h2 {
-    margin: 0;
-  }
-  h3 {
-    text-align: center;
-    color: $text_color;
-    font-size: 8rem;
-    margin: 0;
-  }
-  label {
-    font-size: 1.5rem;
-  }
-  input {
-    width: 40%;
-    padding: 0.5rem;
-    font-size: 1.25rem;
-    border-radius: 5px;
-    border: 1px solid $text_color;
-    text-align: center;
-  }
-  .food_input {
-    width: 60%;
-  }
-  .wrong_input {
-    border: 1px solid red;
-    background-color: red;
-    opacity: 0.5;
-  }
-  .quizz_button {
-    color: $text_color;
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
-  }
+
   .wrong_answer {
     width: 70%;
     display: flex;
