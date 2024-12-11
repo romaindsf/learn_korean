@@ -10,13 +10,15 @@ import { useEffect } from 'react'
 
 export default function QuizzPage() {
   const { theme } = useParams<{ theme: string }>()
-  const { start, setStart, setFilteredQuestions, resetQuiz } = useQuizzContext()
+  const { start, setStart, setquestionsList, setSelectedTheme, resetQuiz } =
+    useQuizzContext()
 
-  const ListQuestions: Question[] = useFilteredQuestions(theme, 15)
+  const ListQuestions: Question[] = useFilteredQuestions(theme, 5)
 
   useEffect(() => {
-    setFilteredQuestions(ListQuestions)
-  }, [ListQuestions, setFilteredQuestions])
+    setSelectedTheme(theme)
+    setquestionsList(ListQuestions)
+  }, [ListQuestions, setSelectedTheme, setquestionsList, theme])
 
   return (
     <main>

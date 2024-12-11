@@ -5,12 +5,12 @@ import { Question } from '@/types/types'
 interface QuizzContextType {
   start: boolean
   setStart: (start: boolean) => void
-  filteredQuestions: Question[]
-  setFilteredQuestions: (questions: Question[]) => void
+  questionsList: Question[]
+  setquestionsList: (questions: Question[]) => void
   currentQuestionIndex: number
   setCurrentQuestionIndex: (index: number) => void
-  questions: Question[]
-  setQuestions: (questions: Question[]) => void
+  selectedTheme: string
+  setSelectedTheme: (theme: string) => void
   score: number
   setScore: (score: number) => void
   resetQuiz: () => void
@@ -20,27 +20,27 @@ const QuizzContext = createContext<QuizzContextType | undefined>(undefined)
 
 export function QuizzProvider({ children }: { children: ReactNode }) {
   const [start, setStart] = useState<boolean>(false)
-  const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([])
+  const [questionsList, setquestionsList] = useState<Question[]>([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
-  const [questions, setQuestions] = useState<Question[]>([])
+  const [selectedTheme, setSelectedTheme] = useState<string>('')
   const [score, setScore] = useState<number>(0)
 
   const resetQuiz = () => {
     setStart(false)
     setCurrentQuestionIndex(0)
-    setQuestions([])
+    setSelectedTheme('')
     setScore(0)
   }
 
   const value = {
     start,
     setStart,
-    filteredQuestions,
-    setFilteredQuestions,
+    questionsList,
+    setquestionsList,
     currentQuestionIndex,
     setCurrentQuestionIndex,
-    questions,
-    setQuestions,
+    selectedTheme,
+    setSelectedTheme,
     score,
     setScore,
     resetQuiz,
