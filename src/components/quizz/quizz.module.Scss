@@ -37,6 +37,9 @@
     border: 1px solid $text_color;
     text-align: center;
   }
+  .food_input {
+    width: 60%;
+  }
   .wrong_input {
     border: 1px solid red;
     background-color: red;
@@ -46,9 +49,6 @@
     color: $text_color;
     font-size: 1.25rem;
     padding: 0.5rem 1rem;
-  }
-  .food_input {
-    width: 60%;
   }
   .wrong_answer {
     width: 70%;
