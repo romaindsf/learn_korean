@@ -1,3 +1,11 @@
+Steps tu run the project:
+
+- Start the API Server by navigating to the api/ directory
+
+- go run server.go
+
+- Start the front-end development Server with - npm run dev
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
