@@ -2,14 +2,12 @@
 import { useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import { fetchQuestions } from '@/api/callAPI'
-
+import { useQuizzContext } from '@/contexts/QuizzContext'
 import ThemeDiv from '@/components/themeDiv/ThemeDiv'
-
-interface Theme {
-  theme: string
-}
+import { Question } from '@/types/types'
 
 export default function Home() {
+  const { data, setData } = useQuizzContext()
   const [themes, setThemes] = useState<string[]>([])
   const [error, setError] = useState<string | null>(null)
 
@@ -17,10 +15,10 @@ export default function Home() {
     const fetchData = async () => {
       try {
         // Fetch all words from the API
-        const data: Theme[] = await fetchQuestions()
+        setData(await fetchQuestions())
         // Extract unique themes from the data
-        const uniqueThemes = Array.from(
-          new Set(data.map((item: Theme) => item.theme))
+        const uniqueThemes: string[] = Array.from(
+          new Set(data.map((item: Question) => item.theme))
         )
         setThemes(uniqueThemes)
       } catch (err) {
@@ -34,7 +32,7 @@ export default function Home() {
     }
 
     fetchData()
-  }, [error])
+  }, [data, error, setData])
 
   return (
     <main>

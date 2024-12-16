@@ -24,7 +24,7 @@ type Word struct {
 
 func main() {
     // Load environment variables from .env file
-    err := godotenv.Load()
+    err := godotenv.Load("../.env")
     if err != nil {
         log.Fatal("Error loading .env file")
     }
@@ -46,8 +46,18 @@ func main() {
     }
     defer db.Close()
 
-    // Define the API endpoint
+    // Define the API endpoint with CORS support
     http.HandleFunc("/api/words", func(w http.ResponseWriter, r *http.Request) {
+        // Set CORS headers
+        w.Header().Set("Access-Control-Allow-Origin", "*")
+        w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+        w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+        // Handle preflight requests
+        if r.Method == http.MethodOptions {
+            return
+        }
+
         switch r.Method {
         case http.MethodGet:
             // Query the database
@@ -93,9 +103,9 @@ func main() {
                 return
             }
 
-            // Insert the new data into the database
-            _, err := db.Exec("INSERT INTO korean_questions (theme, english, korean, romanisation, description) VALUES (?, ?, ?, ?, ?)",
-                word.Theme, word.English, word.Korean, word.Romanisation, word.Description)
+            // Insert the new data into the database, including the id
+            _, err := db.Exec("INSERT INTO korean_questions (id, theme, english, korean, romanisation, description) VALUES (?, ?, ?, ?, ?, ?)",
+                word.ID, word.Theme, word.English, word.Korean, word.Romanisation, word.Description)
             if err != nil {
                 http.Error(w, err.Error(), http.StatusInternalServerError)
                 return
@@ -114,7 +124,7 @@ func main() {
             }
 
             // Update the existing data in the database
-            _, err := db.Exec("UPDATE korean_questions theme = ?, english = ?, korean = ?, romanisation = ?, description = ? WHERE id = ?",
+            _, err := db.Exec("UPDATE korean_questions SET theme = ?, english = ?, korean = ?, romanisation = ?, description = ? WHERE id = ?",
                 word.Theme, word.English, word.Korean, word.Romanisation, word.Description, word.ID)
             if err != nil {
                 http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -132,7 +142,7 @@ func main() {
                 return
             }
 
-            id, err := strconv.Atoi(idStr) // Convert id parameter to integer
+            id, err := strconv.Atoi(idStr)
             if err != nil {
                 http.Error(w, "Invalid id parameter", http.StatusBadRequest)
                 return

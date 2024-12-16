@@ -5,6 +5,8 @@ import { Question } from '@/types/types'
 interface QuizzContextType {
   start: boolean
   setStart: (start: boolean) => void
+  data: Question[]
+  setData: (data: Question[]) => void
   questionsList: Question[]
   setquestionsList: (questions: Question[]) => void
   currentQuestionIndex: number
@@ -20,6 +22,7 @@ const QuizzContext = createContext<QuizzContextType | undefined>(undefined)
 
 export function QuizzProvider({ children }: { children: ReactNode }) {
   const [start, setStart] = useState<boolean>(false)
+  const [data, setData] = useState<Question[]>([])
   const [questionsList, setquestionsList] = useState<Question[]>([])
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
   const [selectedTheme, setSelectedTheme] = useState<string>('')
@@ -35,6 +38,8 @@ export function QuizzProvider({ children }: { children: ReactNode }) {
   const value = {
     start,
     setStart,
+    data,
+    setData,
     questionsList,
     setquestionsList,
     currentQuestionIndex,
