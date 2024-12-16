@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useRef } from 'react'
 import Button from '@/components/button/Button'
 import styles from './answerForm.module.scss'
 
@@ -16,6 +16,14 @@ export const AnswerForm: React.FC<AnswerFormProps> = ({
   handleChange,
   handleSubmit,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [])
+
   return (
     <form className={styles.quizz_form} onSubmit={handleSubmit}>
       <label htmlFor='answer'>Answer:</label>
@@ -29,6 +37,7 @@ export const AnswerForm: React.FC<AnswerFormProps> = ({
         className={`${isFoodCategory ? styles.food_input : ''} ${
           isWrongAnswer ? styles.wrong_input : ''
         }`}
+        ref={inputRef}
         // Disable the input field if the answer is wrong
         {...(isWrongAnswer ? { readOnly: true } : {})}
       />
