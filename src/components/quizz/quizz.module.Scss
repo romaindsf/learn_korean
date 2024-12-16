@@ -1,14 +1,15 @@
 @use '@/styles/utils.scss' as *;
 .quizz_div {
   display: flex;
-  width: 80%;
-  margin: auto;
-  border-radius: 10px;
-  background-color: $div_Bg;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  padding: 5rem;
+  margin: auto;
+  border-radius: 10px;
+  background-color: $div_Bg;
+  width: 80%;
+  max-width: 40rem;
 
   .wrong_answer {
     width: 70%;

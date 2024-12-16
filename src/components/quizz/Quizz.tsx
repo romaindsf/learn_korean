@@ -25,7 +25,7 @@ export default function Quizz() {
   const alphabetTheme: boolean = selectedTheme === 'alphabet'
 
   return (
-    <div>
+    <div className={styles.quizz_div}>
       {isOver ? ( // If the quiz is over, display the score
         <div>
           <h2>
@@ -38,7 +38,7 @@ export default function Quizz() {
             // If there are no questions available, display a message
             <p>No questions available.</p>
           ) : (
-            <div className={styles.quizz_div}>
+            <>
               <DisplayQuestion // Display the question component
                 questionNumber={currentQuestionIndex + 1}
                 korean={questionsList[currentQuestionIndex].korean}
@@ -81,7 +81,7 @@ export default function Quizz() {
                   }}
                 />
               )}
-            </div>
+            </>
           )}
         </div>
       )}

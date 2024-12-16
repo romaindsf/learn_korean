@@ -1,0 +1,36 @@
+@use '@/styles/utils.scss' as *;
+
+.select_length_quizz {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 15px;
+  background-color: $div_Bg;
+  color: $text_color;
+
+  label {
+    font-size: 1.25rem;
+  }
+
+  select {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid $green_color;
+    border-radius: 5px;
+    background-color: $div_Bg;
+    color: $text_color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $hover_color;
+      border: 1px solid $hover_color;
+    }
+
+    &:active {
+      background-color: $active_color;
+    }
+  }
+}

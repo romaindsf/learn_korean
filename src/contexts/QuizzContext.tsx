@@ -9,6 +9,8 @@ interface QuizzContextType {
   setData: (data: Question[]) => void
   questionsList: Question[]
   setquestionsList: (questions: Question[]) => void
+  questionLength: number
+  setquestionLength: (length: number) => void
   currentQuestionIndex: number
   setCurrentQuestionIndex: (index: number) => void
   selectedTheme: string
@@ -24,6 +26,7 @@ export function QuizzProvider({ children }: { children: ReactNode }) {
   const [start, setStart] = useState<boolean>(false)
   const [data, setData] = useState<Question[]>([])
   const [questionsList, setquestionsList] = useState<Question[]>([])
+  const [questionLength, setquestionLength] = useState<number>(5)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
   const [selectedTheme, setSelectedTheme] = useState<string>('')
   const [score, setScore] = useState<number>(0)
@@ -42,6 +45,8 @@ export function QuizzProvider({ children }: { children: ReactNode }) {
     setData,
     questionsList,
     setquestionsList,
+    questionLength,
+    setquestionLength,
     currentQuestionIndex,
     setCurrentQuestionIndex,
     selectedTheme,

@@ -3,14 +3,18 @@ import { Question } from '@/types/types'
 import { filterAndRandomizeQuestions } from '@/utils/filterAndRandomizeQuestions'
 import { useQuizzContext } from '@/contexts/QuizzContext'
 
-export const useFilteredQuestions = (theme: string, size: number) => {
-  const { data } = useQuizzContext()
+export const useFilteredQuestions = (theme: string) => {
+  const { data, questionLength } = useQuizzContext()
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([])
 
   useEffect(() => {
-    const limitedQuestions = filterAndRandomizeQuestions(data, theme, size)
+    const limitedQuestions = filterAndRandomizeQuestions(
+      data,
+      theme,
+      questionLength
+    )
     setFilteredQuestions(limitedQuestions)
-  }, [theme, size, data])
+  }, [theme, data, questionLength])
 
   return filteredQuestions
 }
