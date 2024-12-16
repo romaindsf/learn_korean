@@ -4,7 +4,7 @@ import styles from './page.module.scss'
 import { fetchQuestions } from '@/api/callAPI'
 import { useQuizzContext } from '@/contexts/QuizzContext'
 import ThemeDiv from '@/components/themeDiv/ThemeDiv'
-import { Question } from '@/types/types'
+import extractUniqueThemes from '@/utils/extractUniqueThemes'
 
 export default function Home() {
   const { data, setData } = useQuizzContext()
@@ -17,17 +17,12 @@ export default function Home() {
         // Fetch all words from the API
         setData(await fetchQuestions())
         // Extract unique themes from the data
-        const uniqueThemes: string[] = Array.from(
-          new Set(data.map((item: Question) => item.theme))
-        )
-        setThemes(uniqueThemes)
+        setThemes(extractUniqueThemes(data))
       } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message)
-          console.error(error)
-        } else {
-          setError('An unknown error occurred')
-        }
+        setError(
+          err instanceof Error ? err.message : 'An unknown error occurred'
+        )
+        console.error(err)
       }
     }
 

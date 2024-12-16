@@ -2,11 +2,7 @@ import styles from './themeDiv.module.scss'
 import Link from 'next/link'
 import Button from '@/components/button/Button'
 
-interface ThemeDivProps {
-  themes: string[]
-}
-
-export default function ThemeDiv({ themes }: ThemeDivProps) {
+export default function ThemeDiv({ themes }: { themes: string[] }) {
   return (
     <div className={styles.themes_div}>
       {themes.map((theme, index) => (
