@@ -10,21 +10,4 @@
   background-color: $div_Bg;
   width: 80%;
   max-width: 40rem;
-
-  .wrong_answer {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-  }
-  .correct_answer {
-    background-color: red;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    color: $text_color;
-  }
 }

@@ -3,7 +3,7 @@ import { useQuizzContext } from '@/contexts/QuizzContext'
 import styles from './quizz.module.scss'
 import { DisplayQuestion } from './DisplayQuestion/DisplayQuestion'
 import { AnswerForm } from './AnswerForm/AnswerForm'
-import { WrongAnswerDisplay } from './WrongAnswerDisplay/WrongAnswerDisplay'
+import { DisplayWrongAnswer } from './DisplayWrongAnswer/DisplayWrongAnswer'
 // import { handleSubmit, handleChange } from './utils/utils'
 
 export default function Quizz() {
@@ -11,7 +11,6 @@ export default function Quizz() {
     // Destructure the context
     questionsList,
     currentQuestionIndex,
-    setCurrentQuestionIndex,
     selectedTheme,
     score,
   } = useQuizzContext()
@@ -22,7 +21,7 @@ export default function Quizz() {
   const alphabetTheme: boolean = selectedTheme === 'alphabet'
 
   return (
-    <div className={styles.quizz_div}>
+    <div>
       {isOver ? ( // If the quiz is over, display the score
         <div>
           <h2>
@@ -35,7 +34,7 @@ export default function Quizz() {
             // If there are no questions available, display a message
             <p>No questions available.</p>
           ) : (
-            <>
+            <div className={styles.quizz_div}>
               <DisplayQuestion // Display the question component
                 questionNumber={currentQuestionIndex + 1}
                 korean={questionsList[currentQuestionIndex].korean}
@@ -50,20 +49,12 @@ export default function Quizz() {
                 />
               ) : (
                 // Display the wrong answer component
-                <WrongAnswerDisplay
-                  correctAnswer={
-                    alphabetTheme // If the theme is 'alphabet', display the romanisation
-                      ? questionsList[currentQuestionIndex].romanisation || ''
-                      : questionsList[currentQuestionIndex].english || ''
-                  }
-                  description={questionsList[currentQuestionIndex].description}
-                  onNext={() => {
-                    setIsWrongAnswer(false)
-                    setCurrentQuestionIndex(currentQuestionIndex + 1)
-                  }}
+                <DisplayWrongAnswer
+                  alphabetTheme={alphabetTheme}
+                  setIsWrongAnswer={setIsWrongAnswer}
                 />
               )}
-            </>
+            </div>
           )}
         </div>
       )}
