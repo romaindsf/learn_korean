@@ -4,7 +4,7 @@ import styles from './quizz.module.scss'
 import { DisplayQuestion } from './DisplayQuestion/DisplayQuestion'
 import { AnswerForm } from './AnswerForm/AnswerForm'
 import { WrongAnswerDisplay } from './WrongAnswerDisplay/WrongAnswerDisplay'
-import { handleSubmit, handleChange } from './utils/utils'
+// import { handleSubmit, handleChange } from './utils/utils'
 
 export default function Quizz() {
   const {
@@ -14,14 +14,11 @@ export default function Quizz() {
     setCurrentQuestionIndex,
     selectedTheme,
     score,
-    setScore,
   } = useQuizzContext()
   // State to store the user's answer
-  const [answer, setAnswer] = useState<string>('')
   const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false)
   const [isOver, setIsOver] = useState<boolean>(false)
   // Check if the selected theme is 'food' or 'alphabet'
-  const foodTheme: boolean = selectedTheme === 'food'
   const alphabetTheme: boolean = selectedTheme === 'alphabet'
 
   return (
@@ -46,25 +43,10 @@ export default function Quizz() {
               {!isWrongAnswer ? (
                 // Display the answer form component
                 <AnswerForm
-                  answer={answer}
-                  isFoodCategory={foodTheme}
                   isWrongAnswer={isWrongAnswer}
-                  handleChange={(e) => handleChange(e, setAnswer)}
-                  handleSubmit={(e) =>
-                    handleSubmit(
-                      e,
-                      answer,
-                      setAnswer,
-                      setIsWrongAnswer,
-                      alphabetTheme,
-                      questionsList,
-                      currentQuestionIndex,
-                      score,
-                      setScore,
-                      setCurrentQuestionIndex,
-                      setIsOver
-                    )
-                  }
+                  setIsWrongAnswer={setIsWrongAnswer}
+                  alphabetTheme={alphabetTheme}
+                  setIsOver={setIsOver}
                 />
               ) : (
                 // Display the wrong answer component

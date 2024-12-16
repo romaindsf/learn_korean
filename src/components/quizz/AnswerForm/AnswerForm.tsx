@@ -1,21 +1,31 @@
-import { ChangeEvent, FormEvent, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '@/components/button/Button'
 import styles from './answerForm.module.scss'
+import { handleSubmit, handleChange } from '../utils/utils'
+import { useQuizzContext } from '@/contexts/QuizzContext'
 
 interface AnswerFormProps {
-  answer: string
-  isFoodCategory: boolean
   isWrongAnswer: boolean
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void
-  handleSubmit: (event: FormEvent<HTMLFormElement>) => void
+  setIsWrongAnswer: (value: boolean) => void
+  alphabetTheme: boolean
+  setIsOver: (value: boolean) => void
 }
-export const AnswerForm: React.FC<AnswerFormProps> = ({
-  answer,
-  isFoodCategory,
+export function AnswerForm({
   isWrongAnswer,
-  handleChange,
-  handleSubmit,
-}) => {
+  setIsWrongAnswer,
+  alphabetTheme,
+  setIsOver,
+}: AnswerFormProps) {
+  const {
+    questionsList,
+    currentQuestionIndex,
+    setCurrentQuestionIndex,
+    selectedTheme,
+    score,
+    setScore,
+  } = useQuizzContext()
+  const [answer, setAnswer] = useState<string>('')
+  const foodTheme: boolean = selectedTheme === 'food'
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -25,16 +35,33 @@ export const AnswerForm: React.FC<AnswerFormProps> = ({
   }, [])
 
   return (
-    <form className={styles.quizz_form} onSubmit={handleSubmit}>
+    <form
+      className={styles.quizz_form}
+      onSubmit={(e) =>
+        handleSubmit(
+          e,
+          answer,
+          setAnswer,
+          setIsWrongAnswer,
+          alphabetTheme,
+          questionsList,
+          currentQuestionIndex,
+          score,
+          setScore,
+          setCurrentQuestionIndex,
+          setIsOver
+        )
+      }
+    >
       <label htmlFor='answer'>Answer:</label>
       <input
         type='text'
         id='answer'
         name='answer'
         value={answer}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e, setAnswer)}
         // Add the 'food_input' class if the theme is 'food'
-        className={`${isFoodCategory ? styles.food_input : ''} ${
+        className={`${foodTheme ? styles.food_input : ''} ${
           isWrongAnswer ? styles.wrong_input : ''
         }`}
         ref={inputRef}
