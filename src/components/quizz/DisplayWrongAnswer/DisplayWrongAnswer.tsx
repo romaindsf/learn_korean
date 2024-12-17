@@ -4,10 +4,13 @@ import styles from './displayWrongAnswer.module.scss'
 import { useEffect, useRef } from 'react'
 import { useQuizzContext } from '@/contexts/QuizzContext'
 
-export const DisplayWrongAnswer: React.FC<{
+export default function DisplayWrongAnswer({
+  alphabetTheme,
+  setIsWrongAnswer,
+}: {
   alphabetTheme: boolean
   setIsWrongAnswer: (value: boolean) => void
-}> = ({ alphabetTheme, setIsWrongAnswer }) => {
+}) {
   const { questionsList, currentQuestionIndex, setCurrentQuestionIndex } =
     useQuizzContext()
   const correctAnswer: string = alphabetTheme

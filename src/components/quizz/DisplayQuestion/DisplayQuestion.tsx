@@ -1,18 +1,12 @@
+import { useQuizzContext } from '@/contexts/QuizzContext'
 import styles from './displayQuestion.module.scss'
 
-interface QuestionDisplayProps {
-  questionNumber: number
-  korean: string
-}
-
-export const DisplayQuestion: React.FC<QuestionDisplayProps> = ({
-  questionNumber,
-  korean,
-}) => {
+export default function DisplayQuestion() {
+  const { questionsList, currentQuestionIndex } = useQuizzContext()
   return (
     <div className={styles.question}>
-      <h2>question n°{questionNumber}:</h2>
-      <h3>{korean}</h3>
+      <h2>question n°{currentQuestionIndex}:</h2>
+      <h3>{questionsList[currentQuestionIndex].korean}</h3>
     </div>
   )
 }

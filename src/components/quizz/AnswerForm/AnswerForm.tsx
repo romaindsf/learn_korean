@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Button from '@/components/button/Button'
 import styles from './answerForm.module.scss'
 import { handleSubmit, handleChange } from '../utils/utils'
 import { useQuizzContext } from '@/contexts/QuizzContext'
+import { useFocus } from '@/hooks/useFocus'
 
 interface AnswerFormProps {
   isWrongAnswer: boolean
@@ -10,7 +11,7 @@ interface AnswerFormProps {
   alphabetTheme: boolean
   setIsOver: (value: boolean) => void
 }
-export function AnswerForm({
+export default function AnswerForm({
   isWrongAnswer,
   setIsWrongAnswer,
   alphabetTheme,
@@ -26,13 +27,7 @@ export function AnswerForm({
   } = useQuizzContext()
   const [answer, setAnswer] = useState<string>('')
   const foodTheme: boolean = selectedTheme === 'food'
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [])
+  const inputRef = useFocus<HTMLInputElement>()
 
   return (
     <form
