@@ -7,32 +7,20 @@ import { useQuizzContext } from '@/contexts/QuizzContext'
 
 export default function Quizz({ theme }: { theme: string }) {
   const { questionsList } = useQuizzContext()
-  const {
-    isWrongAnswer,
-    setIsWrongAnswer,
-    isOver,
-    setIsOver,
-    alphabetTheme,
-    handleRetry,
-  } = useQuiz(theme)
+  const { isOver, setIsOver, alphabetTheme, handleRetry } = useQuiz(theme)
 
   return (
     <div className={styles.main_content}>
       {isOver ? (
         <ResultsDiv handleRetry={handleRetry} />
       ) : (
-        <div>
+        <>
           {!questionsList || questionsList.length === 0 ? (
             <p>No questions available.</p>
           ) : (
-            <QuizzDiv
-              isWrongAnswer={isWrongAnswer}
-              setIsWrongAnswer={setIsWrongAnswer}
-              alphabetTheme={alphabetTheme}
-              setIsOver={setIsOver}
-            />
+            <QuizzDiv alphabetTheme={alphabetTheme} setIsOver={setIsOver} />
           )}
-        </div>
+        </>
       )}
     </div>
   )

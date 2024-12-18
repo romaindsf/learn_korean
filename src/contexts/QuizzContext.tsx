@@ -17,6 +17,8 @@ interface QuizzContextType {
   setSelectedTheme: (theme: string) => void
   score: number
   setScore: (score: number) => void
+  showResults: boolean
+  setShowResults: (showResults: boolean) => void
   resetQuiz: () => void
 }
 
@@ -30,12 +32,13 @@ export function QuizzProvider({ children }: { children: ReactNode }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0)
   const [selectedTheme, setSelectedTheme] = useState<string>('')
   const [score, setScore] = useState<number>(0)
-
+  const [showResults, setShowResults] = useState<boolean>(false)
   const resetQuiz = () => {
     setStart(false)
     setCurrentQuestionIndex(0)
     setSelectedTheme('')
     setScore(0)
+    setShowResults(false)
   }
 
   const value = {
@@ -53,6 +56,8 @@ export function QuizzProvider({ children }: { children: ReactNode }) {
     setSelectedTheme,
     score,
     setScore,
+    showResults,
+    setShowResults,
     resetQuiz,
   }
 

@@ -1,24 +1,37 @@
-import { FormEvent, ChangeEvent } from 'react'
+import { FormEvent } from 'react'
 import { Question } from '@/types/types'
+interface HandleSubmitProps {
+  event: FormEvent<HTMLFormElement>
+  answer: string
+  setAnswer: (value: string) => void
+  setIsWrongAnswer: (value: boolean) => void
+  alphabetTheme: boolean
+  questionsList: Question[]
+  currentQuestionIndex: number
+  score: number
+  setScore: (value: number) => void
+  setShowResults: (value: boolean) => void
+  setCurrentQuestionIndex: (value: number) => void
+}
 
-export const handleSubmit = (
-  event: FormEvent<HTMLFormElement>,
-  answer: string,
-  setAnswer: (value: string) => void,
-  setIsWrongAnswer: (value: boolean) => void,
-  alphabetTheme: boolean,
-  questionsList: Question[],
-  currentQuestionIndex: number,
-  score: number,
-  setScore: (value: number) => void,
-  setCurrentQuestionIndex: (value: number) => void,
-  setIsOver: (value: boolean) => void
-): void => {
+export function handleSubmit({
+  event,
+  answer,
+  setAnswer,
+  setIsWrongAnswer,
+  alphabetTheme,
+  questionsList,
+  currentQuestionIndex,
+  score,
+  setScore,
+  setShowResults,
+  setCurrentQuestionIndex,
+}: HandleSubmitProps): void {
   event.preventDefault()
   const trimmedAnswer = answer.trim().toLowerCase()
   const currentQuestion = questionsList[currentQuestionIndex]
 
-  let isCorrect = false
+  let isCorrect: boolean = false
 
   if (
     !alphabetTheme &&
@@ -32,9 +45,13 @@ export const handleSubmit = (
     isCorrect = true
   }
 
+  setAnswer('') // Clear the input field
+
   if (isCorrect) {
     setScore(score + 1)
-    setCurrentQuestionIndex(currentQuestionIndex + 1)
+    if (currentQuestionIndex <= questionsList.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1)
+    }
     setIsWrongAnswer(false)
   } else {
     setIsWrongAnswer(true)
@@ -42,14 +59,8 @@ export const handleSubmit = (
 
   setAnswer('') // Clear the input field
 
-  if (currentQuestionIndex >= questionsList.length - 1) {
-    setIsOver(true)
+  if (currentQuestionIndex === questionsList.length - 1) {
+    setShowResults(true)
+    console.log('show results')
   }
-}
-
-export const handleChange = (
-  event: ChangeEvent<HTMLInputElement>,
-  setAnswer: (value: string) => void
-): void => {
-  setAnswer(event.target.value)
 }

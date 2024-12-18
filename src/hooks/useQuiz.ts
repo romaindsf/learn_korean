@@ -12,11 +12,11 @@ export const useQuiz = (theme: string) => {
     setquestionsList,
     setCurrentQuestionIndex,
     setScore,
+    setShowResults,
     questionLength,
     selectedTheme,
   } = useQuizzContext()
 
-  const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false)
   const [isOver, setIsOver] = useState<boolean>(false)
   const alphabetTheme: boolean = selectedTheme === 'alphabet'
 
@@ -43,12 +43,11 @@ export const useQuiz = (theme: string) => {
     setquestionsList(newQuestions)
     setCurrentQuestionIndex(0)
     setScore(0)
+    setShowResults(false)
     setIsOver(false)
   }
 
   return {
-    isWrongAnswer,
-    setIsWrongAnswer,
     isOver,
     setIsOver,
     alphabetTheme,

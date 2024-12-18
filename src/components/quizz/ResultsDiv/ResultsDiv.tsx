@@ -16,7 +16,7 @@ export default function ResultDiv({
       <h2>
         Your score is: {score} / {questionsList.length}
       </h2>
-      <Button onClick={handleRetry} ref={buttonRef}>
+      <Button type='button' onClick={handleRetry} ref={buttonRef}>
         Retry
       </Button>
     </div>
