@@ -1,6 +1,6 @@
-import DisplayQuestion from '../DisplayQuestion/DisplayQuestion'
-import AnswerForm from '../AnswerForm/AnswerForm'
-import DisplayWrongAnswer from '../DisplayWrongAnswer/DisplayWrongAnswer'
+import DisplayQuestion from './DisplayQuestion/DisplayQuestion'
+import AnswerForm from './AnswerForm/AnswerForm'
+import DisplayWrongAnswer from './DisplayWrongAnswer/DisplayWrongAnswer'
 import styles from '../quizz.module.scss'
 import { useState } from 'react'
 

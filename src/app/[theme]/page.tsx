@@ -29,9 +29,7 @@ export default function QuizzPage() {
           <Button onClick={() => setStart(!start)}>Start Quizz</Button>
         </div>
       ) : (
-        <div className={styles.main_content}>
-          <Quizz theme={theme} />
-        </div>
+        <Quizz theme={theme} />
       )}
       <Link href='/' onClick={resetQuiz} className={styles.goBackLink}>
         Go back to home
