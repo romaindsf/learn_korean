@@ -9,8 +9,13 @@ export function filterQuestionsByTheme(
 }
 
 // Function to randomly remove questions until only the specified size remains
+// With the Fisher-Yates shuffle algorithm:
 export function getRandomSubset(arr: Question[], size: number): Question[] {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random())
+  const shuffled = [...arr]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
   return shuffled.slice(0, size)
 }
 
