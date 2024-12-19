@@ -1,6 +1,5 @@
 import { useQuizzContext } from '@/contexts/QuizzContext'
 import styles from '../answerForm.module.scss'
-import Button from '@/components/button/Button'
 import { useFocus } from '@/hooks/useFocus'
 
 export default function InputText({
@@ -34,9 +33,6 @@ export default function InputText({
         // Disable the input field if the answer is wrong
         {...(isWrongAnswer ? { readOnly: true } : {})}
       />
-      <Button type='submit' className={styles.quizz_button}>
-        Submit
-      </Button>
     </>
   )
 }

@@ -37,10 +37,13 @@ export function handleSubmit({
     !alphabetTheme &&
     currentQuestion?.english?.toLowerCase() === trimmedAnswer
   ) {
-    isCorrect = true
+    if (trimmedAnswer !== '') {
+      isCorrect = true
+    }
   } else if (
     alphabetTheme &&
-    currentQuestion.romanisation.toLowerCase().includes(trimmedAnswer)
+    currentQuestion.romanisation.toLowerCase() === trimmedAnswer &&
+    trimmedAnswer !== ''
   ) {
     isCorrect = true
   }
@@ -61,6 +64,5 @@ export function handleSubmit({
 
   if (currentQuestionIndex === questionsList.length - 1) {
     setShowResults(true)
-    console.log('show results')
   }
 }

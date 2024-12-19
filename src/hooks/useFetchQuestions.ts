@@ -21,7 +21,6 @@ export const useFetchQuestions = () => {
         console.error(err)
       }
     }
-
     fetchData()
   }, [setData])
 

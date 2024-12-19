@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './answerForm.module.scss'
 import { handleSubmit } from './utils/handleSubmit'
 import { useQuizzContext } from '@/contexts/QuizzContext'
 import InputText from './InputText/InputText'
 import BtnShowResult from './BtnShowResult/BtnShowResult'
+import InputRadio from './InputRadio/InputRadio'
+import Button from '@/components/button/Button'
 
 interface AnswerFormProps {
   isWrongAnswer: boolean
@@ -27,6 +29,15 @@ export default function AnswerForm({
     setShowResults,
   } = useQuizzContext()
   const [answer, setAnswer] = useState<string>('')
+  const [quizzType, setQuizzType] = useState<'text' | 'radio'>('text')
+
+  useEffect(() => {
+    // Switch quiz type randomly
+    const switchQuizzType = () => {
+      setQuizzType(Math.random() > 0.5 ? 'text' : 'radio')
+    }
+    switchQuizzType()
+  }, [currentQuestionIndex, showResults])
 
   return (
     <form
@@ -48,11 +59,26 @@ export default function AnswerForm({
       }
     >
       {!showResults ? (
-        <InputText
-          answer={answer}
-          setAnswer={setAnswer}
-          isWrongAnswer={isWrongAnswer}
-        />
+        <>
+          {quizzType === 'text' ? (
+            <InputText
+              answer={answer}
+              setAnswer={setAnswer}
+              isWrongAnswer={isWrongAnswer}
+            />
+          ) : (
+            <InputRadio
+              answer={answer}
+              setAnswer={setAnswer}
+              isWrongAnswer={isWrongAnswer}
+              questionsList={questionsList}
+              currentQuestionIndex={currentQuestionIndex}
+            />
+          )}
+          <Button type='submit' className={styles.quizz_button}>
+            Submit
+          </Button>
+        </>
       ) : (
         <BtnShowResult setIsOver={setIsOver} />
       )}

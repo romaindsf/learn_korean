@@ -11,6 +11,27 @@
   label {
     font-size: 1.5rem;
   }
+  .radio_label {
+    border: 1px solid $green_color;
+    border-radius: 5px;
+    padding: 1rem;
+    cursor: pointer;
+    display: block; // Ensure the label takes up the full width
+
+    &:hover {
+      background-color: $hover_color;
+    }
+
+    &.selected {
+      background-color: $active_color;
+      border-color: $active_color; // Add a different border color when active
+    }
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
   input {
     width: 40%;
     padding: 0.5rem;
