@@ -25,6 +25,7 @@ export default function InputText({
         name='answer'
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
+        autoComplete='off'
         // Add the 'food_input' class if the theme is 'food'
         className={`${foodTheme ? styles.food_input : ''} ${
           isWrongAnswer ? styles.wrong_input : ''

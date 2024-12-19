@@ -6,7 +6,9 @@ import styles from './page.module.scss'
 
 export default function Home() {
   const { themes, error } = useFetchQuestions()
-
+  if (!themes) {
+    return <p>Loading...</p>
+  }
   return (
     <main>
       <h1>Learn Korean!</h1>

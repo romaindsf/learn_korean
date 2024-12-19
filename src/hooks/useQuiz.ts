@@ -38,7 +38,7 @@ export const useQuiz = (theme: string) => {
   }, [questionsSet, setquestionsList])
 
   // Handle retry logic
-  const handleRetry = () => {
+  function handleRetry() {
     const newQuestions = getRandomSubset(themedQuestions, questionLength)
     setquestionsList(newQuestions)
     setCurrentQuestionIndex(0)
